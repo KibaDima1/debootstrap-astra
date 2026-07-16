@@ -1,0 +1,8 @@
+usr/share/debootstrap/scripts/1.8_x86-64 usr/share/debootstrap/scripts/12.8_x86-64
+usr/share/debootstrap/scripts/1.8_x86-64 usr/share/debootstrap/scripts/3.8_s390x
+usr/share/debootstrap/scripts/orel usr/share/debootstrap/scripts/1.7_x86-64
+usr/share/debootstrap/scripts/orel usr/share/debootstrap/scripts/4.7_arm
+usr/share/debootstrap/scripts/orel usr/share/debootstrap/scripts/4.8_arm
+usr/share/debootstrap/scripts/orel usr/share/debootstrap/scripts/novorossiysk
+usr/share/debootstrap/scripts/orel usr/share/debootstrap/scripts/sevastopol
+usr/share/debootstrap/scripts/orel usr/share/debootstrap/scripts/smolensk

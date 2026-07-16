@@ -1,0 +1,29 @@
+name       : debootstrap
+version    : 1.0.141
+release    : 1
+source     :
+    - git|https://salsa.debian.org/installer-team/debootstrap.git : 8457f34b4c30a09e7acfabf5ab153146cc3470ed
+homepage   : https://salsa.debian.org/installer-team/debootstrap
+license    : MIT
+component  : programming.tools
+summary    : Bootstrap a basic Debian system
+description: |
+    Bootstrap a basic Debian system
+rundeps    :
+    - binutils
+build      : |
+    %apply_patches
+install    : |
+    make DESTDIR="$installdir" install
+
+    install -Dm00644 $pkgfiles/scripts/1.8_x86-64 $installdir/usr/share/debootstrap/scripts/1.8_x86-64
+    install -Dm00644 $pkgfiles/scripts/orel $installdir/usr/share/debootstrap/scripts/orel
+
+    ln -sf 1.8_x86-64 $installdir/usr/share/debootstrap/scripts/12.8_x86-64
+    ln -sf 1.8_x86-64 $installdir/usr/share/debootstrap/scripts/3.8_s390x
+    ln -sf orel $installdir/usr/share/debootstrap/scripts/1.7_x86-64
+    ln -sf orel $installdir/usr/share/debootstrap/scripts/4.7_arm
+    ln -sf orel $installdir/usr/share/debootstrap/scripts/4.8_arm
+    ln -sf orel $installdir/usr/share/debootstrap/scripts/novorossiysk
+    ln -sf orel $installdir/usr/share/debootstrap/scripts/sevastopol
+    ln -sf orel $installdir/usr/share/debootstrap/scripts/smolensk

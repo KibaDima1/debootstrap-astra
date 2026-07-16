@@ -1,0 +1,42 @@
+name: Build Debian package
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "**"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v5
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential debhelper devscripts equivs lintian
+          sudo mk-build-deps --install --remove --tool "apt-get -y --no-install-recommends" debian/control
+
+      - name: Build package
+        run: ./scripts/build.sh
+
+      - name: Inspect package
+        run: |
+          dpkg-deb --info dist/debootstrap_*_all.deb
+          dpkg-deb --contents dist/debootstrap_*_all.deb
+          lintian --display-info --pedantic dist/debootstrap_*_all.deb
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: debootstrap-deb
+          path: dist/*.deb
+          if-no-files-found: error

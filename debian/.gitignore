@@ -1,0 +1,6 @@
+debhelper-build-stamp
+debootstrap
+debootstrap-udeb
+files
+*.debhelper.log
+*.substvars

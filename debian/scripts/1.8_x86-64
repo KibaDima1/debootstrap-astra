@@ -1,0 +1,29 @@
+case $SUITE in
+    1.8_x86-64|4.8_arm|1.7_x86-64|4.7_arm|novorossiysk|sevastopol|smolensk|3.8_s390x|12.8_x86-64)
+default_mirror $USER_MIRROR
+    ;;
+    orel)
+default_mirror https://dl.astralinux.ru/astra/stable/2.12_x86-64/repository
+;;
+esac
+
+mirror_style release
+download_style apt
+finddebs_style from-indices
+variants - buildd fakechroot minbase
+keyring /usr/share/apt/astra-archive.gpg
+
+if [ -z $CUSTOM_COMPONENTS ]; then
+    default_components 'main|contrib|non-free|non-free-firmware'
+fi
+
+# include common settings
+if [ -e "$DEBOOTSTRAP_DIR/scripts/debian-common" ]; then
+ . "$DEBOOTSTRAP_DIR/scripts/debian-common"
+elif [ -e /debootstrap/debian-common ]; then
+ . /debootstrap/debian-common
+elif [ -e "$DEBOOTSTRAP_DIR/debian-common" ]; then
+ . "$DEBOOTSTRAP_DIR/debian-common"
+else
+ error 1 NOCOMMON "File not found: debian-common"
+fi

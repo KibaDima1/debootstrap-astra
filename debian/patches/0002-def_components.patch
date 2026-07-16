@@ -1,0 +1,21 @@
+Description: Add a helper for suite-specific default components
+ This lets Astra suite scripts select their default repository components.
+Author: debootstrap-astra maintainers
+Forwarded: not-needed
+Last-Update: 2026-07-16
+
+diff --git a/functions b/functions
+index c6752f4..7ee6619 100644
+--- a/functions
++++ b/functions
+@@ -176,6 +176,10 @@ default_mirror () {
+ 	DEF_MIRROR="$1"
+ }
+ 
++default_components () {
++	export USE_COMPONENTS="$1"
++}
++
+ FINDDEBS_NEEDS_INDICES="false"
+ finddebs_style () {
+ 	case "$1" in

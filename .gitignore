@@ -1,0 +1,10 @@
+/dist/
+/debian/.debhelper/
+/debian/debootstrap/
+/debian/debhelper-build-stamp
+/debian/files
+/debian/*.debhelper.log
+/debian/*.substvars
+/*.build
+/*.buildinfo
+/*.changes

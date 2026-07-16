@@ -1,0 +1,2 @@
+debian/scripts/1.8_x86-64 usr/share/debootstrap/scripts
+debian/scripts/orel usr/share/debootstrap/scripts

@@ -1,0 +1,25 @@
+Source: debootstrap
+Section: admin
+Priority: optional
+Maintainer: Dmitriy <KibaDima1@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Vcs-Browser: https://github.com/KibaDima1/debootstrap-astra
+Vcs-Git: https://github.com/KibaDima1/debootstrap-astra.git
+Homepage: https://salsa.debian.org/installer-team/debootstrap
+
+Package: debootstrap
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, binutils, wget, distro-info
+Recommends: sopv | sqv | gpgv, mount, ${debootstrap:Recommends}
+Suggests: squid-deb-proxy-client, ${debootstrap:Suggests}
+Description: Bootstrap a basic Debian or Astra Linux system
+ debootstrap is used to create a Debian base system from scratch,
+ without requiring the availability of dpkg or apt. It does this by
+ downloading .deb files from a mirror site, and carefully unpacking them
+ into a directory which can eventually be chrooted into.
+ .
+ This build adds Astra Linux suites and defaults, and forces amd64 host
+ architecture detection for its target environment.

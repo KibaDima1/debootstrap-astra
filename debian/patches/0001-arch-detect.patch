@@ -1,0 +1,27 @@
+Description: Force amd64 host architecture detection
+ The target Astra Linux packaging is intended for amd64 bootstrap hosts.
+Author: debootstrap-astra maintainers
+Forwarded: not-needed
+Last-Update: 2026-07-16
+
+diff --git a/debootstrap b/debootstrap
+index 43a7383..62c991f 100755
+--- a/debootstrap
++++ b/debootstrap
+@@ -547,15 +547,7 @@ fi
+ 
+ ###########################################################################
+ 
+-if in_path dpkg && \
+-     dpkg --print-architecture >/dev/null 2>&1; then
+-	HOST_ARCH=$(/usr/bin/dpkg --print-architecture)
+-elif in_path udpkg && \
+-     udpkg --print-architecture >/dev/null 2>&1; then
+-	HOST_ARCH=$(/usr/bin/udpkg --print-architecture)
+-elif [ -e "$DEBOOTSTRAP_DIR/arch" ]; then
+-	HOST_ARCH=$(cat "$DEBOOTSTRAP_DIR/arch")
+-fi
++HOST_ARCH=amd64
+ HOST_OS="$HOST_ARCH"
+ # basic host OS guessing for non-Debian systems
+ if [ -z "$HOST_OS" ]; then
