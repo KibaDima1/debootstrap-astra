@@ -2,6 +2,8 @@
 
 Debian-пакет `debootstrap` версии `1.0.141+astra1-1` с поддержкой Astra Linux.
 Пакет основан на upstream commit `8457f34b4c30a09e7acfabf5ab153146cc3470ed`.
+Исходники не хранятся в этом репозитории: сборщик скачивает зафиксированный
+архив и проверяет его SHA-256 перед применением Debian packaging.
 
 В сборке:
 
@@ -54,8 +56,9 @@ sudo debootstrap \
 
 ## Локальная сборка
 
-На Debian/Ubuntu скрипт использует установленный `dpkg-buildpackage`. На macOS
-и других системах он автоматически использует Docker:
+На Debian/Ubuntu скрипт скачивает pinned upstream во временный каталог и
+использует установленный `dpkg-buildpackage`. На macOS и других системах он
+автоматически использует Docker:
 
 ```sh
 ./scripts/build.sh

@@ -28,7 +28,7 @@ jobs:
       - name: Install build and repository dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential debhelper devscripts equivs apt-utils
+          sudo apt-get install -y build-essential curl debhelper devscripts equivs apt-utils
           sudo mk-build-deps --install --remove --tool "apt-get -y --no-install-recommends" debian/control
 
       - name: Build package
